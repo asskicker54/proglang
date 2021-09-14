@@ -17,7 +17,7 @@ struct DateTime{
 
   void Output(int);
   void GetNext();
-  void GetPrevious();
+  void GetPrev();
 
 };
 
@@ -30,7 +30,8 @@ void DateTime::GetNext(){
   
 }
 
-DateTime * ReadFile(){
+DateTime* ReadFile()
+{
   ifstream tempLine("data");
   string c;
   while(getline(tempLine, c)) {
@@ -40,7 +41,7 @@ DateTime * ReadFile(){
 
   ifstream file("data");
 
-  DateTime *arr = new DateTime[gN];
+  DateTime *date = new DateTime[gN];
   int i = 0;
   string line;
   DateTime *tempArr;
@@ -48,15 +49,19 @@ DateTime * ReadFile(){
     istringstream fileLine(line);
     tempArr = new DateTime;
     fileLine >> tempArr->day >> tempArr->month >> tempArr->year >> tempArr->hour >> tempArr->minute >> tempArr->second;
-    arr[i++] = *tempArr;
+    date[i++] = *tempArr;
   }
+  tempLine.close();
+  file.close();
 
-  return arr;
+  return date;
 }
 
 int main(){
-  DateTime * arr = ReadFile();
-  for(int i = 0; i < gN; i++){
+  DateTime* date = ReadFile();
+  /*for(int i = 0; i < gN; i++){
     arr[i].Output(i);
-  }
+  }*/
+  DateTime* prev = new DateTime[gN];
+  
 }
