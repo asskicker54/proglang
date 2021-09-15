@@ -142,7 +142,7 @@ int main(){
   
   for(int i{}; i < n; i++)
   {
-    if (dateArr[i].year == nextArr[i].year)
+    if (dateArr[i].month == nextArr[i].month)
         {
             printf("%i)\t", i + 1);
             dateArr[i].Output(); 
