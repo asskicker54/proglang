@@ -2,12 +2,14 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <time.h>
+#include <stdio.h>
+#include <ctime>
 
 using namespace std;
 
-int gN = 0;
-
-struct DateTime{
+struct Datetime
+{
   unsigned int second;
   unsigned int minute;
   unsigned int hour;
@@ -15,39 +17,37 @@ struct DateTime{
   unsigned int month;
   unsigned int year;
 
-  void Output(int);
-  void GetNext();
-  void GetPrev();
-
+  void Output();
+  void GetNext(Datetime&);
+  void GetPrev(Datetime&);
+  Datetime GetSysTime();
 };
 
-void DateTime::Output(int n){
-  printf("%d: \t%02u/%02u/%02u %02u:%02u:%02u\n", n, day, month, year, hour, minute, second);
+void Datetime::Output(){
+  printf("%d: \t%02u/%02u/%02u %02u:%02u:%02u\n", day, month, year, hour, minute, second);
  
 }
 
-void DateTime::GetNext(){
-  
-}
-
-DateTime* ReadFile()
+Datetime* ReadFile(int &n)
 {
   ifstream tempLine("data");
   string c;
-  while(getline(tempLine, c)) {
-    gN++;
+  n = 0;
+  while(getline(tempLine, c))
+  {
+    n++;
   }
-  cout << gN << endl;
+  cout << n << endl;
 
   ifstream file("data");
 
-  DateTime *date = new DateTime[gN];
+  Datetime *date = new Datetime[n];
   int i = 0;
   string line;
-  DateTime *tempArr;
+  Datetime *tempArr;
   while(getline(file, line)){
     istringstream fileLine(line);
-    tempArr = new DateTime;
+    tempArr = new Datetime;
     fileLine >> tempArr->day >> tempArr->month >> tempArr->year >> tempArr->hour >> tempArr->minute >> tempArr->second;
     date[i++] = *tempArr;
   }
@@ -57,11 +57,98 @@ DateTime* ReadFile()
   return date;
 }
 
+Datetime Datetime::GetSysTime()
+{
+    Datetime r;
+    time_t t;
+    time(&t);
+
+    tm* ct = localtime(&t);
+    
+    r.day = ct->tm_mday;
+    r.month = ct->tm_mon + 1;
+    r.year = ct->tm_year + 1900;
+    r.hour = ct->tm_hour;
+    r.minute = ct->tm_min;
+    r.second = ct->tm_sec;
+
+    return r;
+}
+
+time_t GetUnixTime(Datetime d)
+{
+    tm timeinfo;
+    timeinfo.tm_year = d.year - 1900;
+    timeinfo.tm_mon = d.month - 1;
+    timeinfo.tm_mday = d.day;
+    timeinfo.tm_hour = d.hour;
+    timeinfo.tm_min = d.minute;
+    timeinfo.tm_sec = d.second;
+    time_t unix_time = mktime(&timeinfo);
+    return unix_time;
+}
+
+void GetNormalTime(time_t unix_time, Datetime& d)
+{
+    tm timeinfo;
+    localtime_s(&timeinfo, &unix_time);
+    d.hour = timeinfo.tm_hour;
+    d.minute = timeinfo.tm_min;
+    d.second = timeinfo.tm_sec;
+    d.day = timeinfo.tm_mday;
+    d.month = timeinfo.tm_mon + 1;
+    d.year = timeinfo.tm_year + 1900;
+}
+
+void Datetime::GetNext(Datetime& next)
+{
+    int min = 2419200 * 2;
+    int max = 31536000;
+    GetNormalTime(GetUnixTime(*this) + (min + rand() % (max - min + 1)), next);
+}
+
+void Datetime::GetPrev(Datetime& prev)
+{
+    int min = 2419200 * 2;
+    int max = 31536000;
+    GetNormalTime(GetUnixTime(*this) - (min + rand() % (max - min + 1)), prev);
+}
+
 int main(){
-  DateTime* date = ReadFile();
-  /*for(int i = 0; i < gN; i++){
-    arr[i].Output(i);
-  }*/
-  DateTime* prev = new DateTime[gN];
+  Datetime date;
+  Datetime prev;
+  Datetime next;
+  int n;
+  Datetime* dateArr = ReadFile(n);
+  Datetime* nextArr = new Datetime[n];
+
+  date = date.GetSysTime(); 
+  cout << "System time:" << endl;
+  date.Output();
+
+  for (int i = 0; i < n; i++)
+  {
+    dateArr[i].GetPrev(prev);
+    dateArr[i].GetNext(next);
+    printf("%i)\t", i + 1);
+    dateArr[i].Output(); 
+    printf("\t");
+    next.Output();
+    printf("\t");
+    prev.Output();
+    printf("\n");
+    nextArr[i] = next;
+  }
   
+  for(int i{}; i < n; i++)
+  {
+    if (dateArr[i].year == nextArr[i].year)
+        {
+            printf("%i)\t", i + 1);
+            dateArr[i].Output(); 
+            printf("\t");
+            prev.Output();
+            printf("\n");
+        }
+  }
 }
