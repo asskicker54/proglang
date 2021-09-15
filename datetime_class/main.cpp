@@ -32,25 +32,18 @@ unsigned int Datetime::Get(int arg)
   {
     case 0:
       return second;
-      break;
     case 1:
       return minute;
-      break;
     case 2:
       return hour;
-      break;
     case 3:
       return day;
-      break;
     case 4:
       return month;
-      break;
     case 5:
       return year;
-      break;  
     default:
       return 0;
-      break;
   }
 }
 
