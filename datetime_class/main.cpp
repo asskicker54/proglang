@@ -10,69 +10,19 @@ using namespace std;
 
 class Datetime
 {
+public:
+  unsigned int second;
+  unsigned int minute;
+  unsigned int hour;
+  unsigned int day;
+  unsigned int month;
+  unsigned int year;
 
-    unsigned int second;
-    unsigned int minute;
-    unsigned int hour;
-    unsigned int day;
-    unsigned int month;
-    unsigned int year;
-public:    
-    unsigned int Get(int);
-    void Set(int, int);
-    void Output();
-    void GetNext(Datetime&);
-    void GetPrev(Datetime&);
-    Datetime GetSysTime();
+  void Output();
+  void GetNext(Datetime&);
+  void GetPrev(Datetime&);
+  Datetime GetSysTime();
 };
-
-unsigned int Datetime::Get(int arg)
-{
-  switch(arg)
-  {
-    case 0:
-      return second;
-    case 1:
-      return minute;
-    case 2:
-      return hour;
-    case 3:
-      return day;
-    case 4:
-      return month;
-    case 5:
-      return year;
-    default:
-      return 0;
-  }
-}
-
-void Datetime::Set(int arg, int n)
-{
-  switch(arg)
-  {
-    case 0:
-      second = n;
-      break;
-    case 1:
-      minute = n;
-      break;
-    case 2:
-      hour = n;
-      break;
-    case 3:
-      day = n;
-      break;
-    case 4:
-      month = n;
-      break;
-    case 5:
-      year = n;
-      break;  
-    default:
-      break;
-  }
-}
 
 void Datetime::Output(){
   printf("%d: \t%02u/%02u/%02u %02u:%02u:%02u\n", day, month, year, hour, minute, second);
@@ -193,7 +143,7 @@ int main(){
   
   for(int i{}; i < n; i++)
   {
-    if (dateArr[i].year == nextArr[i].year)
+    if (dateArr[i].month == nextArr[i].month)
         {
             printf("%i)\t", i + 1);
             dateArr[i].Output(); 
