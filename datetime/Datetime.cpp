@@ -4,6 +4,10 @@
 
 #include "Datetime.h"
 
+Datetime::Datetime() {
+
+}
+
 Datetime::Datetime(unsigned int d, unsigned int mon, unsigned int y,unsigned int h, unsigned int min, unsigned int s)
 {
     second = s;
@@ -33,7 +37,7 @@ unsigned int Datetime::Get(int arg)
     }
 }
 
-std::string Datetime::GenerateString(int id, std::string arg)
+std::string Datetime::GenerateString(std::string arg)
 {
     char curr[100] = "\0";
     char next[100] = "\0";
@@ -48,7 +52,8 @@ std::string Datetime::GenerateString(int id, std::string arg)
     P = GetPrev();
     sprintf(prev, format, P.day, P.month, P.year, P.hour, P.minute, P.second);
 
-    std::string result = "";
+    std::string result;
+    result = "";
 
     for (int i = 0; i < arg.length(); i++) {
         switch (arg[i]) {

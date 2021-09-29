@@ -4,10 +4,13 @@
 
 #ifndef DATETIME_USERINTERFACE_H
 #define DATETIME_USERINTERFACE_H
+#include "Datetime.h"
 
 
 class UserInterface {
-
+public:
+    void print(Datetime *, int &);
+    void printEx(Datetime *, int &);
 };
 
 

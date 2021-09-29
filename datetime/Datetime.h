@@ -24,7 +24,7 @@ public:
 //Get
     unsigned int Get(int);
 
-    std::string GenerateString(int, std::string);
+    std::string GenerateString(std::string);
     Datetime GetNext();
     Datetime GetPrev();
     Datetime CurrentTime();

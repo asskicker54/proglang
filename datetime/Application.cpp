@@ -4,6 +4,7 @@
 
 #include "Application.h"
 #include "Datetime.h"
+#include "UserInterface.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -15,23 +16,15 @@ void Application::Start() {
     Datetime* arr;
     int n = 0;
     ReadFile(arr, n);
+    UserInterface printer;
 
     cout << "№\tТекущая\t\t\tСледующая\t\tПредыдущая\n";
-    for (int i = 0; i < n; i++) {
-        cout << i+1 << ":" << arr[i].GenerateString(i + 1, "cnp");
-    }
+    printer.print(arr, n);
+    printer.printEx(arr, n);
 
-
-    int count = 1;
-    for (int i = 0; i < n; i++) {
-        if (arr[i].GetNext().Get(1) == arr[i].GetPrev().Get(1)) {
-            cout << count << ":" << arr[i].GenerateString(count, "cnp");
-            count++;
-        }
-    }
-
-    Datetime currTime = currTime.CurrentTime();
-    cout << "\nСейчас " << currTime.GenerateString(0, "c") << endl;
+    Datetime currTime;
+    currTime = currTime.CurrentTime();
+    cout << "\nСейчас " << currTime.GenerateString("c") << endl;
 
     delete[] arr;
 }
@@ -54,7 +47,7 @@ void Application::ReadFile(Datetime*& arr, int& n)
     while (getline(counter, c)) {
         n++;
     }
-
+    cout << n << endl;
     arr = new Datetime[n];
 
     unsigned int day, month, year, hour, minute, second;
