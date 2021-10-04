@@ -21,6 +21,7 @@ public:
 //Constructors
     Datetime(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
     Datetime();
+    ~Datetime();
 //Get
     unsigned int Get(int);
 

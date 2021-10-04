@@ -3,13 +3,13 @@
 //
 
 #include "Datetime.h"
+#include <iostream>
 
 Datetime::Datetime() {
 
 }
 
-Datetime::Datetime(unsigned int d, unsigned int mon, unsigned int y,unsigned int h, unsigned int min, unsigned int s)
-{
+Datetime::Datetime(unsigned int d, unsigned int mon, unsigned int y,unsigned int h, unsigned int min, unsigned int s) {
     second = s;
     minute = min;
     hour = h;
@@ -17,6 +17,11 @@ Datetime::Datetime(unsigned int d, unsigned int mon, unsigned int y,unsigned int
     month = mon;
     year = y;
 }
+
+Datetime::~Datetime() {
+    std::cout << "Symphony of destruction" << std::endl;
+}
+
 unsigned int Datetime::Get(int arg)
 {
     switch(arg) {
