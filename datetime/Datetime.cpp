@@ -44,6 +44,7 @@ unsigned int Datetime::Get(int arg)
 
 std::string Datetime::GenerateString(std::string arg)
 {
+    std::cout << "Datetime" << std::endl;
     char curr[100] = "\0";
     char next[100] = "\0";
     char prev[100] = "\0";

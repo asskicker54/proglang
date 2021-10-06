@@ -1,11 +1,13 @@
-#include "Application.h"
+#include "Datetime.h"
+#include "DatetimeExtended.h"
+#include <iostream>
 
 using namespace std;
 
 int main() 
 {
-    Application Main;
-    Main.Start();
-    return 0;
+    Datetime *A = new DatetimeExtended(12, 12, 12, 12, 12, 12, 12);
+    std::cout << A->GenerateString("c") << std::endl;
+    delete A;
 }
 

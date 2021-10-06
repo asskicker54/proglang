@@ -9,7 +9,7 @@
 
 class Datetime {
 
-private:
+protected:
     unsigned int second;
     unsigned int minute;
     unsigned int hour;
@@ -25,7 +25,7 @@ public:
 //Get
     unsigned int Get(int);
 
-    std::string GenerateString(std::string);
+    virtual std::string GenerateString(std::string);
     Datetime GetNext();
     Datetime GetPrev();
     Datetime CurrentTime();
