@@ -45,11 +45,21 @@ double Rectangle::CalcPerimetr() {
 }
 
 double Rectangle::CalcArea() {
-    return a + b;
+    return a * b;
 }
 
-double CalcVolume(double h, Figure *f) {
-    return h * f->CalcArea();
+Figure* Triangle::Clone() {
+    Figure* f = new Triangle(*this);
+    return f;
 }
 
+Figure* Circle::Clone() {
+    Figure* f = new Circle(*this);
+    return f;
+}
+
+Figure* Rectangle::Clone() {
+    Figure* f = new Rectangle(*this);
+    return f;
+}
 

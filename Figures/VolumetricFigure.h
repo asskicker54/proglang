@@ -20,6 +20,7 @@ private:
     double h;
 public:
     Cylinder(double, Figure *);
+    ~Cylinder();
     virtual double CalcVolume();
 };
 
