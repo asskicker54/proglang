@@ -7,6 +7,7 @@
 
 const double PI = 3.1415926535;
 
+
 class Figure {
 public:
     virtual double CalcPerimetr() = 0;
@@ -45,5 +46,7 @@ public:
     double CalcPerimetr();
     double CalcArea();
 };
+
+double CalcVolume(double h, Figure *f);
 
 #endif //FIGURES_FIGURES_H

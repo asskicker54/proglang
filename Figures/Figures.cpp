@@ -48,4 +48,8 @@ double Rectangle::CalcArea() {
     return a + b;
 }
 
+double CalcVolume(double h, Figure *f) {
+    return h * f->CalcArea();
+}
+
 
