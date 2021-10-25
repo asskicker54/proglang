@@ -12,6 +12,7 @@ private:
 
 public:
     virtual double CalcVolume() = 0;
+    virtual VolumetricFigure *Clone() = 0;
 };
 
 class Cylinder : public VolumetricFigure{
@@ -22,6 +23,7 @@ public:
     Cylinder(double, Figure *);
     ~Cylinder();
     virtual double CalcVolume();
+    virtual VolumetricFigure *Clone();
 };
 
 #endif //FIGURES_VOLUMETRICFIGURE_H

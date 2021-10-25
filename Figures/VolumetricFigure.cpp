@@ -17,3 +17,8 @@ Cylinder::Cylinder(double in_h, Figure *in_f) {
 Cylinder::~Cylinder() {
     delete F;
 }
+
+VolumetricFigure *Cylinder::Clone() {
+    VolumetricFigure* f = new Cylinder(*this);
+    return f;
+}

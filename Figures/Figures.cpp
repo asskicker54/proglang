@@ -48,18 +48,18 @@ double Rectangle::CalcArea() {
     return a * b;
 }
 
-Figure* Triangle::Clone() {
-    Figure* f = new Triangle(*this);
+Figure *Triangle::Clone() {
+    Figure *f = new Triangle(*this);
     return f;
 }
 
-Figure* Circle::Clone() {
-    Figure* f = new Circle(*this);
+Figure *Circle::Clone() {
+    Figure *f = new Circle(*this);
     return f;
 }
 
-Figure* Rectangle::Clone() {
-    Figure* f = new Rectangle(*this);
+Figure *Rectangle::Clone() {
+    Figure *f = new Rectangle(*this);
     return f;
 }
 
