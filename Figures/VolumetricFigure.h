@@ -21,7 +21,7 @@ private:
     double h;
 public:
     Cylinder(double, Figure *);
-    ~Cylinder();
+    virtual ~Cylinder();
     virtual double CalcVolume();
     virtual VolumetricFigure *Clone();
 };

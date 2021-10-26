@@ -22,3 +22,12 @@ double CustomFigure::CalcArea() {
     }
 }
 
+double CustomFigure::CalcPerimetr() {
+    return 0;
+}
+
+Figure *CustomFigure::Clone() {
+    Figure * f = new CustomFigure(*this);
+    return f;
+}
+

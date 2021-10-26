@@ -7,14 +7,16 @@
 
 #include "Figures.h"
 
-class CustomFigure {
+class CustomFigure : public Figure{
 private:
     Figure *mainFigure;
     Figure *cut;
 public:
     CustomFigure(Figure *, Figure*);
-    ~CustomFigure();
-    double CalcArea();
+    virtual ~CustomFigure();
+    Figure *Clone();
+    virtual double CalcArea();
+    virtual double CalcPerimetr();
 };
 
 #endif //FIGURES_CUSTOMFIGURE_H
