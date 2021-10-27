@@ -12,18 +12,28 @@ private:
 
 public:
     virtual double CalcVolume() = 0;
-    virtual VolumetricFigure *Clone() = 0;
 };
 
 class Cylinder : public VolumetricFigure{
-private:
+protected:
     Figure *F;
     double h;
 public:
-    Cylinder(double, Figure *);
-    virtual ~Cylinder();
-    virtual double CalcVolume();
-    virtual VolumetricFigure *Clone();
+    Cylinder(double);
+    ~Cylinder();
+    double CalcVolume() override;
+    virtual Figure *CreateFigure(Figure *) = 0;
 };
 
+class CircleCylinder : public Cylinder {
+public:
+    CircleCylinder(double h, Figure *in_f);
+    Figure *CreateFigure(Figure *) override;
+};
+
+class TriangleCylinder : public Cylinder {
+public:
+    TriangleCylinder(double , Figure *);
+    Figure *CreateFigure(Figure *) override;
+};
 #endif //FIGURES_VOLUMETRICFIGURE_H

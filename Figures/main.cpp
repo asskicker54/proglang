@@ -19,11 +19,7 @@ int main() {
     */
     Figure *ptr_R = &R;
     Figure *ptr_T = &T;
-    CustomFigure cf(ptr_R, ptr_T);
-    cout << cf.CalcArea() << endl;
-    cout << cf.CalcPerimetr() << endl;
-    Figure *ptr_Cyl = &cf;
-    Cylinder Cyl(5, ptr_Cyl);
+    TriangleCylinder Cyl(2, ptr_T);
     cout << Cyl.CalcVolume() << endl;
     return 0;
 }

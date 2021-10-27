@@ -12,7 +12,6 @@ class Figure {
 public:
     virtual double CalcPerimetr() = 0;
     virtual double CalcArea() = 0;
-    virtual Figure *Clone() = 0;
 };
 
 
@@ -24,7 +23,6 @@ public:
     Triangle(double, double, double);
     double CalcPerimetr();
     double CalcArea();
-    virtual Figure *Clone();
 };
 
 
@@ -36,7 +34,6 @@ public:
     Circle(double);
     double CalcPerimetr();
     double CalcArea();
-    virtual Figure *Clone();
 };
 
 
@@ -48,7 +45,6 @@ public:
     Rectangle(double, double);
     double CalcPerimetr();
     double CalcArea();
-    virtual Figure *Clone();
 };
 
 

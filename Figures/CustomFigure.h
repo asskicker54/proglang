@@ -1,7 +1,7 @@
 //
 // Created by ass_kicker54 on 10/25/21.
 //
-//TODO Clone function for Custom Figure
+
 #ifndef FIGURES_CUSTOMFIGURE_H
 #define FIGURES_CUSTOMFIGURE_H
 
@@ -12,9 +12,8 @@ private:
     Figure *mainFigure;
     Figure *cut;
 public:
-    CustomFigure(Figure *, Figure*);
+    //CustomFigure(Figure *, Figure*);
     virtual ~CustomFigure();
-    Figure *Clone();
     virtual double CalcArea();
     virtual double CalcPerimetr();
 };
