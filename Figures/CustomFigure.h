@@ -14,8 +14,8 @@ private:
 public:
     //CustomFigure(Figure *, Figure*);
     virtual ~CustomFigure();
-    virtual double CalcArea();
-    virtual double CalcPerimetr();
+    double CalcArea() override;
+    double CalcPerimetr() override;
 };
 
 #endif //FIGURES_CUSTOMFIGURE_H

@@ -17,23 +17,25 @@ public:
 class Cylinder : public VolumetricFigure{
 protected:
     Figure *F;
+private:
     double h;
 public:
     Cylinder(double);
     ~Cylinder();
     double CalcVolume() override;
-    virtual Figure *CreateFigure(Figure *) = 0;
 };
 
 class CircleCylinder : public Cylinder {
 public:
     CircleCylinder(double h, Figure *in_f);
-    Figure *CreateFigure(Figure *) override;
+    ~CircleCylinder();
+    static Figure *CreateFigure(Figure *);
+    double GetRadius();
 };
 
 class TriangleCylinder : public Cylinder {
 public:
     TriangleCylinder(double , Figure *);
-    Figure *CreateFigure(Figure *) override;
+    Figure *CreateFigure(Figure *);
 };
 #endif //FIGURES_VOLUMETRICFIGURE_H

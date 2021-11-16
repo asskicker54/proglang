@@ -21,8 +21,8 @@ private:
     double a, b, c;
 public:
     Triangle(double, double, double);
-    double CalcPerimetr();
-    double CalcArea();
+    double CalcPerimetr() override;
+    double CalcArea() override;
 };
 
 
@@ -32,8 +32,8 @@ private:
     double r;
 public:
     Circle(double);
-    double CalcPerimetr();
-    double CalcArea();
+    double CalcPerimetr() override;
+    double CalcArea() override;
 };
 
 
@@ -43,8 +43,8 @@ private:
     double a, b;
 public:
     Rectangle(double, double);
-    double CalcPerimetr();
-    double CalcArea();
+    double CalcPerimetr() override;
+    double CalcArea() override;
 };
 
 

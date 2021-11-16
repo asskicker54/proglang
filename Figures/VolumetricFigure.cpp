@@ -26,9 +26,8 @@ TriangleCylinder::TriangleCylinder(double h, Figure *in_f) : Cylinder(h) {
     this->F = CreateFigure(in_f);
 }
 
-Figure *CircleCylinder::CreateFigure(Figure *f) {
-    Figure *c = new Circle(*dynamic_cast<Circle*>(f));
-    return  c;
+Figure *CircleCylinder::CreateFigure(double in_h, double in_r) {
+    //
 }
 
 Figure *TriangleCylinder::CreateFigure(Figure *f) {
