@@ -3,10 +3,10 @@
 //
 #include "CustomFigure.h"
 
-/*CustomFigure::CustomFigure(Figure *in_mainFigure, Figure *in_cut) {
+CustomFigure::CustomFigure(Figure *in_mainFigure, Figure *in_cut) {
     this->mainFigure = in_mainFigure->Clone();
     this->cut = in_cut->Clone();
-}*/
+}
 
 CustomFigure::~CustomFigure() {
     delete mainFigure;
@@ -26,4 +26,7 @@ double CustomFigure::CalcPerimetr() {
     return mainFigure->CalcPerimetr() + cut->CalcPerimetr();
 }
 
-
+Figure *CustomFigure::Clone() {
+    Figure * f = new CustomFigure(*this);
+    return f;
+}

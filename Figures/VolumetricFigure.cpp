@@ -2,35 +2,23 @@
 // Created by ass_kicker54 on 10/20/21.
 //
 
-
-//TODO: Cylinder constructor
 #include "VolumetricFigure.h"
+#include <string.h>
 
 double Cylinder::CalcVolume() {
     return h * F->CalcArea();
 }
 
-Cylinder::Cylinder(double in_h) {
+Cylinder::Cylinder(double in_h, Figure *in_f) {
     this->h = in_h;
+    this->F = in_f->Clone();
 }
 
 Cylinder::~Cylinder() {
     delete F;
 }
 
-CircleCylinder::CircleCylinder(double h, Figure *in_f) : Cylinder(h) {
-    this->F = CreateFigure(in_f);
-}
-
-TriangleCylinder::TriangleCylinder(double h, Figure *in_f) : Cylinder(h) {
-    this->F = CreateFigure(in_f);
-}
-
-Figure *CircleCylinder::CreateFigure(double in_h, double in_r) {
-    //
-}
-
-Figure *TriangleCylinder::CreateFigure(Figure *f) {
-    Figure *t = new Triangle(*dynamic_cast<Triangle*>(f));
-    return t;
+VolumetricFigure *Cylinder::Clone() {
+    VolumetricFigure* f = new Cylinder(*this);
+    return f;
 }

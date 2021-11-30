@@ -3,7 +3,7 @@
 //
 
 #include "Figures.h"
-#include <cmath>
+#include <math.h>
 
 
 /*TRIANGLE*/
@@ -22,7 +22,9 @@ double Triangle::CalcArea() {
 
 
 /*Circle*/
-Circle::Circle(double in_r) : r{in_r} {}
+Circle::Circle(double in_r) : r{in_r} {
+    //constructor
+}
 
 double Circle::CalcPerimetr() {
     return 2 * PI * r;
@@ -46,5 +48,17 @@ double Rectangle::CalcArea() {
     return a * b;
 }
 
+Figure *Triangle::Clone() {
+    Figure *f = new Triangle(*this);
+    return f;
+}
 
+Figure *Circle::Clone() {
+    Figure *f = new Circle(*this);
+    return f;
+}
 
+Figure *Rectangle::Clone() {
+    Figure *f = new Rectangle(*this);
+    return f;
+}
