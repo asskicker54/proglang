@@ -3,22 +3,32 @@
 //
 
 #include "VolumetricFigure.h"
-#include <string.h>
+#include <string>
 
-double Cylinder::CalcVolume() {
-    return h * F->CalcArea();
+
+template<class T>
+double Cylinder<T>::CalcVolume() {
+    return h * (base->CalcArea());
 }
+template<class T>
+Cylinder<T>::Cylinder(double in_h, T* b) {
+    if(in_h <= 0) throw std::string("Invalid cylinder height: " + std::to_string(in_h));
 
-Cylinder::Cylinder(double in_h, Figure *in_f) {
     this->h = in_h;
-    this->F = in_f->Clone();
+    this->base = static_cast<T*>(b->Clone());
 }
 
-Cylinder::~Cylinder() {
-    delete F;
+template<class T>
+Cylinder<T>::~Cylinder() {
+    delete base;
 }
+template<class T>
+T* Cylinder<T>::GetBaseFigure() {
+    return static_cast<T*>(base->Clone());
+}
+template<class T>
+double Cylinder<T>::GetH() { return h;}
 
-VolumetricFigure *Cylinder::Clone() {
-    VolumetricFigure* f = new Cylinder(*this);
-    return f;
-}
+template class Cylinder<Circle>;
+template class Cylinder<Rectangle>;
+template class Cylinder<Triangle>;

@@ -12,18 +12,21 @@ private:
 
 public:
     virtual double CalcVolume() = 0;
-    virtual VolumetricFigure *Clone() = 0;
 };
-
+template<class T>
 class Cylinder : public VolumetricFigure{
 private:
-    Figure *F;
+    T* base;
     double h;
 public:
-    Cylinder(double, Figure *);
-    virtual ~Cylinder();
-    virtual double CalcVolume();
-    virtual VolumetricFigure *Clone();
+    Cylinder(double, T*);
+
+    ~Cylinder();
+    double CalcVolume() override;
+
+    double GetH();
+    T* GetBaseFigure();
+
 };
 
 #endif //FIGURES_VOLUMETRICFIGURE_H

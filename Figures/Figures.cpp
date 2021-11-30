@@ -4,11 +4,19 @@
 
 #include "Figures.h"
 #include <math.h>
+#include <string>
 
 
-/*TRIANGLE*/
-Triangle::Triangle(double in_a , double in_b, double in_c) : a{in_a}, b{in_b}, c{in_c} {
-    //constructor
+/*------------------------TRIANGLE-----------------------------------------------------------------*/
+Triangle::Triangle(double in_a , double in_b, double in_c) {
+    if(in_a <= 0 || in_b <= 0 || in_c <= 0) {
+        throw std::string("Invalid triangle sizes: " +
+        std::to_string(in_a) + " " + std::to_string(in_b) + " " + std::to_string(in_c));
+    }
+    this->a = in_a;
+    this->b = in_b;
+    this->c = in_c;
+
 }
 
 double Triangle::CalcPerimetr() {
@@ -20,10 +28,22 @@ double Triangle::CalcArea() {
     return sqrt(p*(p-a)*(p-b)*(p-c));
 }
 
+Figure *Triangle::Clone() {
+    Figure *f = new Triangle(*this);
+    return f;
+}
 
-/*Circle*/
-Circle::Circle(double in_r) : r{in_r} {
-    //constructor
+double Triangle::GetA() {return  a;}
+double Triangle::GetB() {return  b;}
+double Triangle::GetC() {return  c;}
+
+
+/*------------------------------Circle--------------------------------------------------------------------*/
+Circle::Circle(double in_r) {
+    if(in_r <= 0){
+        throw std::string("Invalid circle radius: " + std::to_string(in_r));
+    }
+    this->r = in_r;
 }
 
 double Circle::CalcPerimetr() {
@@ -34,10 +54,21 @@ double Circle::CalcArea() {
     return PI * r * r;
 }
 
+Figure *Circle::Clone() {
+    Figure *f = new Circle(*this);
+    return f;
+}
 
-/*Rectangle*/
-Rectangle::Rectangle(double in_a, double in_b) : a{in_a}, b{in_b} {
-    //constructor
+double Circle::GetR() {return r;}
+
+
+/*---------------------------Rectangle-----------------------------------------------------*/
+Rectangle::Rectangle(double in_a, double in_b)  {
+    if(in_a <=0 || in_b <= 0) throw std::string("Invalid rectangle sizes:" +
+    std::to_string(in_a) + std::to_string(in_b));
+
+    this->a = in_a;
+    this->b = in_b;
 }
 
 double Rectangle::CalcPerimetr() {
@@ -48,17 +79,11 @@ double Rectangle::CalcArea() {
     return a * b;
 }
 
-Figure *Triangle::Clone() {
-    Figure *f = new Triangle(*this);
-    return f;
-}
-
-Figure *Circle::Clone() {
-    Figure *f = new Circle(*this);
-    return f;
-}
-
 Figure *Rectangle::Clone() {
     Figure *f = new Rectangle(*this);
     return f;
 }
+
+double  Rectangle::GetA() {return a;}
+double Rectangle::GetB() {return  b;}
+//--------------------------------------------------

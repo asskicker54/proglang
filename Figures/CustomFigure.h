@@ -14,9 +14,9 @@ private:
 public:
     CustomFigure(Figure *, Figure*);
     virtual ~CustomFigure();
-    Figure *Clone();
-    virtual double CalcArea();
-    virtual double CalcPerimetr();
+    Figure *Clone() override;
+    double CalcArea() override;
+    double CalcPerimetr() override;
 };
 
 #endif //FIGURES_CUSTOMFIGURE_H
