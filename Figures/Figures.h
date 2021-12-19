@@ -20,7 +20,10 @@ public:
 class Triangle : public Figure {
 private:
     double a, b, c;
+    int x1, x2, x3;
+    int y1, y2, y3;
 public:
+    Triangle(int, int, int, int, int, int);
     Triangle(double, double, double);
 
     double CalcPerimetr() override;
@@ -31,6 +34,9 @@ public:
     double GetA();
     double GetB();
     double GetC();
+
+    void GetCoordinates(int&, int&, int&, int&, int&, int&);
+    void SetCoordinates(int, int, int, int, int, int);
 };
 
 
@@ -53,8 +59,11 @@ public:
 class Rectangle : public Figure {
 private:
     double a, b;
+    int x1, x2, x3, x4;
+    int y1, y2, y3, y4;
 public:
     Rectangle(double, double);
+    Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
 
     double CalcPerimetr() override;
     double CalcArea() override;
@@ -63,6 +72,10 @@ public:
 
     double GetA();
     double GetB();
+
+    void GetCoordinates(int&, int&, int&, int&, int&, int&, int&, int&);
+    void SetCoordinates(int, int, int, int, int, int, int, int);
+
 };
 
 
