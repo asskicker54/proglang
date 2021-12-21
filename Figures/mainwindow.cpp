@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "shapes.h"
+#include "Shapes.h"
 #include <QFormLayout>
 #include <QSpinBox>
 #include <QDialogButtonBox>
@@ -40,7 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-    showFullScreen();
 }
 
 MainWindow::~MainWindow()
@@ -68,6 +67,7 @@ void MainWindow::slotCreateTriangle()
     dialog->setWindowTitle("Triangle");
 
     QFormLayout* formLayout = new QFormLayout();
+
     QSpinBox* X1 = new QSpinBox();
     X1->setMinimum(0);
     X1->setMaximum(1000);
@@ -92,7 +92,7 @@ void MainWindow::slotCreateTriangle()
     Y3->setMinimum(0);
     Y3->setMaximum(1000);
 
-    formLayout->addRow("x1:", X1);
+    formLayout->addRow("x1", X1);
     formLayout->addRow("y1:", Y1);
     formLayout->addRow("x2:", X2);
     formLayout->addRow("y2:", Y2);
@@ -135,80 +135,19 @@ void MainWindow::slotCreateRectangle()
     QDialog* dialog = new QDialog();
     dialog->setWindowTitle("Rectangle");
 
-    QFormLayout* formLayout = new QFormLayout();
-    QSpinBox* X1 = new QSpinBox();
-    X1->setMinimum(0);
-    X1->setMaximum(1000);
+    double v1 = QInputDialog::getDouble(0, "Input", "Height", 100);
+    double v2 = QInputDialog::getDouble(0, "Input", "Weight", 100);
 
-    QSpinBox* Y1 = new QSpinBox();
-    Y1->setMinimum(0);
-    Y1->setMaximum(1000);
-
-    QSpinBox* X2 = new QSpinBox();
-    X2->setMinimum(0);
-    X2->setMaximum(1000);
-
-    QSpinBox* Y2 = new QSpinBox();
-    Y2->setMinimum(0);
-    Y2->setMaximum(1000);
-
-    QSpinBox* X3 = new QSpinBox();
-    X3->setMinimum(0);
-    X3->setMaximum(1000);
-
-    QSpinBox* Y3 = new QSpinBox();
-    Y3->setMinimum(0);
-    Y3->setMaximum(1000);
-
-    QSpinBox* X4 = new QSpinBox();
-    X4->setMinimum(0);
-    X4->setMaximum(1000);
-
-    QSpinBox* Y4 = new QSpinBox();
-    Y4->setMinimum(0);
-    Y4->setMaximum(1000);
-
-    formLayout->addRow("x1:", X1);
-    formLayout->addRow("y1:", Y1);
-    formLayout->addRow("x2:", X2);
-    formLayout->addRow("y2:", Y2);
-    formLayout->addRow("x3:", X3);
-    formLayout->addRow("y3:", Y3);
-    formLayout->addRow("x4:", X4);
-    formLayout->addRow("y4:", Y4);
-
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-
-    connect(buttonBox, SIGNAL(accepted()), dialog, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), dialog, SLOT(reject()));
-
-    formLayout->addWidget(buttonBox);
-    dialog->setLayout(formLayout);
-
-    int result = dialog->exec();
-
-    if(result == QDialog::Accepted)
+    try
     {
-        try
-        {
-            RectangleShape* rect = new RectangleShape(Rectangle(X1->value(), Y1->value(),X2->value(), Y2->value(),X3->value(), Y3->value(), X4->value(), Y4->value()), QPoint(0, 0));
-            scene->addItem(rect);
-        }
-        catch(...) {}
+        RectangleShape* rect = new RectangleShape(Rectangle(v1, v2), QPoint(0, 0));
+        scene->addItem(rect);
     }
-
-    delete X1;
-    delete Y1;
-    delete X2;
-    delete Y2;
-    delete X3;
-    delete Y3;
-    delete X4;
-    delete Y4;
-    delete formLayout;
-    delete buttonBox;
-    delete dialog;
+    catch(...) {}
 }
+
+
+
 
 void MainWindow::slotDelete()
 {

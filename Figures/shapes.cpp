@@ -1,4 +1,4 @@
-#include "shapes.h"
+#include "Shapes.h"
 
 Shape::Shape(QPoint position)
 {
@@ -9,9 +9,8 @@ Shape::Shape(QPoint position)
 
 void Shape::Update()
 {
-    QString InfoCoor = QString("\nCoordinates: %1, %2").arg(position.x()).arg((position.y()));
     QString InfoFigure = QString("S = %1\nP = %2").arg(Fig->CalcArea()).arg(Fig->CalcPerimetr());
-    setToolTip(InfoFigure + InfoCoor);
+    setToolTip(InfoFigure);
 }
 
 void Shape::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -112,11 +111,10 @@ RectangleShape::RectangleShape(Rectangle rect, QPoint position) : Shape(position
 void RectangleShape::setPaint()
 {
     path = QPainterPath();
-    int x1, x2, x3, x4;
-    int y1, y2, y3, y4;
-    ((Rectangle*)Fig)->GetCoordinates(x1, y1, x2, y2, x3, y3, x4, y4);
-    path.addPolygon(QPolygon(QList<QPoint>{QPoint(x1, y1), QPoint(x2, y2), QPoint(x3, y3), QPoint(x4, y4)}));
-    bounding = QRectF(QPolygon(QList<QPoint>{QPoint(x1, y1), QPoint(x2, y2), QPoint(x3, y3), QPoint(x4, y4)}).boundingRect());
+    double a = ((Rectangle*)Fig)->GetA();
+    double b = ((Rectangle*)Fig)->GetB();
+    path.addRect(0, 0, a, b);
+    bounding = QRectF(QGraphicsRectItem(0, 0, a, b).boundingRect());
 }
 
 RectangleShape::~RectangleShape()
