@@ -1,4 +1,4 @@
-package IV.Figures;
+package Figures;
 
 public class VolumetricFigure {
     private Figure base;
