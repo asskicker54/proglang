@@ -1,10 +1,10 @@
-abstract class Figure {
-    protected final double PI = 3.1415926535897932384626433832795;
+interface Figure {
+    final double PI = 3.1415926535897932384626433832795;
     public abstract double calcArea();
     public abstract double calcPer();
 }
 
-class Rectangle extends Figure {
+class Rectangle implements Figure {
     private double a;
     private double b;
     Rectangle(double a, double b) {
@@ -22,7 +22,7 @@ class Rectangle extends Figure {
     }
 }
 
-class Triangle extends Figure {
+class Triangle implements Figure {
     private double a;
     private double b;
     private double c;
@@ -44,7 +44,7 @@ class Triangle extends Figure {
     }
 }
 
-class Circle extends Figure {
+class Circle implements Figure {
     private double r;
 
     Circle(double r) {
