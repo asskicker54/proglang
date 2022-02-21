@@ -1,3 +1,7 @@
+package cylinder;
+
+import figure.Figure;
+
 public class Cylinder {
     private double h;
     private Figure base;
