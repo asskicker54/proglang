@@ -1,12 +1,13 @@
-package cylinder;
+package volumetricFigure.prism;
 
 import figure.Figure;
+import volumetricFigure.VolumetricFigure;
 
-public class Cylinder {
+public class Prism implements VolumetricFigure{
     private double h;
     private Figure base;
 
-    public Cylinder(double h, Figure base) throws Exception {
+    public Prism(double h, Figure base) throws Exception {
         if(h <= 0 ) {
             throw new Exception("Ivalid height");
         } else {

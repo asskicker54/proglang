@@ -1,7 +1,5 @@
 import figure.circle.Circle;
-//import figure.rectangle.Rectangle;
-//import figure.triangle.Triangle;
-import cylinder.Cylinder;
+import volumetricFigure.prism.Prism;
 
 public class App {
     public static void main(String[] args) {
@@ -16,10 +14,10 @@ public class App {
 
         System.out.println(c.calcPer());
 
-        Cylinder cyl;
+        Prism cyl;
 
         try{
-            cyl = new Cylinder(5, c);
+            cyl = new Prism(5, c);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return;
