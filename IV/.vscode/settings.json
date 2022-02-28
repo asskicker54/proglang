@@ -1,6 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "Figures/src",
-        "P"
+        "P",
+        "test"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "test/Figure.jar"
     ]
 }

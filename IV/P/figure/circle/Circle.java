@@ -1,6 +1,7 @@
 package figure.circle;
 
 import figure.Figure;
+import static java.lang.Math.PI;
 
 public class Circle implements Figure {
     private double r;
